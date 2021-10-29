@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCalorieTracker.Views.FoodDiaryPage"
+             xmlns:viewmodels="clr-namespace:MyCalorieTracker.ViewModels">
+    <!--<ContentPage.BindingContext>
+        <viewmodels:FoodDiaryPageViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Calories Remaining"
+                 FontSize="Medium"/>
+            <Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Goal of " 
+                           HorizontalOptions="Center" FontSize="Body"></Label>
+                    <Entry x:Name="goalEntry" Text="2000" Keyboard="Numeric" ></Entry>
+                    <Label Text=" - " 
+                           HorizontalOptions="Center" FontSize="Body"></Label>
+                    <Label x:Name="calFromFoodlbl" Text="0" MinimumWidthRequest="50"
+                           HorizontalOptions="CenterAndExpand" FontSize="Body"></Label>
+                    <Label Text=" from Food = " 
+                           HorizontalOptions="Center" FontSize="Body"></Label>
+                    <Label x:Name="remainderlbl" Text="0" MinimumWidthRequest="50"
+                           HorizontalOptions="Center" FontSize="Body"></Label>
+                    <Label Text=" Calories Remaining" 
+                           HorizontalOptions="Center" FontSize="Body"></Label>
+                </StackLayout>
+            </Frame>
+            <Button Text="Add Food" Clicked="Button_Clicked"></Button>
+            <ListView x:Name="foodItemList" 
+                      ItemSelected="foodItemList_ItemSelected" 
+                      IsRefreshing="True"
+                      IsPullToRefreshEnabled="True"
+                      MinimumHeightRequest="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="500">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding image}"></Image>
+                                <Label Text="{Binding title}"></Label>
+                                <Label Text="{Binding caloriesTot, StringFormat='Total Calories: {0:F1}'}"></Label>
+                                <Label Text="{Binding serving, StringFormat='Servings: {0:F1}'}"></Label>
+                            </StackLayout>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Delete"
+                                      CommandParameter="{Binding .}"
+                                      IsDestructive="True"
+                                      Clicked="deleteFromDB"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

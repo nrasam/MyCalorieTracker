@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCalorieTracker.Views.AddFoodDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="foodImg"/>
+            <Label x:Name="foodTitle" Text="Food Title" FontSize="Large"/>
+            <Label Text="Serving Info" FontSize="Medium"></Label>
+            <Frame>
+                <StackLayout BindingContext="{Binding .}" Orientation="Horizontal">
+                    <Label Text="Serving" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                    <Entry x:Name="servingEntry" Placeholder="1 Serving" Keyboard="Numeric" VerticalOptions="Center" HorizontalOptions="Center"></Entry>
+                </StackLayout>
+            </Frame>
+            <Label Text="Nutrition Info" FontSize="Medium"></Label>
+            <Frame>
+                <StackLayout BindingContext="{Binding .}">
+                    <Label x:Name="callbl" Text="Calories" HorizontalOptions="End" FontSize="Medium"/>
+                    <Label x:Name="carblbl" Text="Carbs" HorizontalOptions="End"/>
+                    <Label x:Name="fatlbl" Text="Fat" HorizontalOptions="End"/>
+                    <Label x:Name="prolbl" Text="Protein" HorizontalOptions="End"/>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Log Food" Clicked="Button_Clicked" BackgroundColor="Green"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCalorieTracker.Views.AddFoodPage"
+             xmlns:viewmodels="clr-namespace:MyCalorieTracker.ViewModels"
+             >
+    <ContentPage.BindingContext>
+        <viewmodels:AddFoodPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar SearchButtonPressed="SearchBar_SearchButtonPressedAsync"
+                       TextChanged="SearchBar_TextChanged"
+                       Placeholder="Search foods to add here"
+                       WidthRequest="320"></SearchBar>
+            <ListView x:Name="searchResultsList"
+                      ItemSelected="searchResultsList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding title}"
+                                   ImageSource="{Binding image}"
+                                   Detail="{Binding calories, StringFormat='Calories: {0:F1}'}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
